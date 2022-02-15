@@ -30,6 +30,7 @@ resource "aws_instance" "node_master" {
     Name     = "${var.prefix}-node-worker-${count.index}"
     K8sRoles = "controlplane,etcd"
     TFModule = "${var.prefix}"
+    "kubernetes.io/cluster/${var.clusterid}" = "owned"
   }
 }
 
@@ -62,6 +63,7 @@ resource "aws_instance" "node_worker" {
     Name     = "${var.prefix}-node-worker-${count.index}"
     K8sRoles = "worker"
     TFModule = "${var.prefix}"
+        "kubernetes.io/cluster/${var.clusterid}" = "owned"
   }
 }
 
@@ -94,5 +96,6 @@ resource "aws_instance" "node_all" {
     Name     = "${var.prefix}-node-worker-${count.index}"
     K8sRoles = "controlplane,etcd,worker"
     TFModule = "${var.prefix}"
+        "kubernetes.io/cluster/${var.clusterid}" = "owned"
   }
 }

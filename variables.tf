@@ -100,3 +100,15 @@ variable "user_data" {
   description = "AWS vm's userdata to cloud-init"
   default = ""
 }
+
+variable "clusterid" {
+  type        = string
+  description = "Unique ID for this cluster"
+  default     = "1d776bf9-8283-4ea8-af3a-f8d30646695e"
+}
+
+variable "iam_instance_profile" {
+  type        = string
+  description = "IAM instance profile name to associate with instance"
+  default     = ""
+}
